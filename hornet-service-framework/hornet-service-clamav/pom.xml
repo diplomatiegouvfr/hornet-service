@@ -41,7 +41,7 @@
 	<parent>
 		<groupId>fr.gouv.diplomatie.hornet</groupId>
 		<artifactId>hornet-service-framework-parent</artifactId>
-		<version>5.4.0</version>
+		<version>5.4.1</version>
 	</parent>
 	<artifactId>hornet-service-clamav</artifactId>
 	<packaging>jar</packaging>

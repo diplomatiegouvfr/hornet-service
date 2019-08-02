@@ -1,3 +1,8 @@
+# hornet-service 5.4.1
+ - EVOL: Update commons-collections pour CVE-2015-6420
+ - EVOL: Update jackson-databind pour CVE-2019-12384
+ - EVOL: Update apache-tika pour CVE-2019-12384
+
 # hornet-service 5.4.0
  - EVOL: Version plugins maven
  - EVOL: Update versions des dependances

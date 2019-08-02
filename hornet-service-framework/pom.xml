@@ -42,7 +42,7 @@
 	<parent>
 		<groupId>fr.gouv.diplomatie.hornet</groupId>
 		<artifactId>hornet-service-parent</artifactId>
-		<version>5.4.0</version>
+		<version>5.4.1</version>
 		<relativePath>../hornet-service-parent</relativePath>
 	</parent>
 	
@@ -51,7 +51,7 @@
 	<artifactId>hornet-service-framework-parent</artifactId>
 	
 	<!-- NOTE : penser à mettre la dépendance du BOM à jour : hornet-service-bom -->
-	<version>5.4.0</version>
+	<version>5.4.1</version>
 	<packaging>pom</packaging>
 
 	<inceptionYear>2015</inceptionYear>
@@ -78,7 +78,7 @@
 	<properties>
 	
 		<!-- Bom -->
-		<hornet.bom.version>5.4.0</hornet.bom.version>
+		<hornet.bom.version>5.4.1</hornet.bom.version>
 	</properties>
 
 	<!-- Dependencies -->

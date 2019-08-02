@@ -41,7 +41,7 @@
 	<parent>
 		<groupId>fr.gouv.diplomatie.hornet</groupId>
 		<artifactId>hornet-service-framework-parent</artifactId>
-		<version>5.4.0</version>
+		<version>5.4.1</version>
 	</parent>
 	<artifactId>hornet-service-typemime</artifactId>
 	<packaging>jar</packaging>
@@ -51,7 +51,7 @@
 		<dependency>
 		    <groupId>org.apache.tika</groupId>
 		    <artifactId>tika-core</artifactId>
-		    <version>1.18</version>
+		    <version>1.22</version>
 		</dependency>
 
 	</dependencies>
