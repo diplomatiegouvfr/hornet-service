@@ -1,6 +1,6 @@
 <!--
 
-    ﻿Copyright Ministère des Affaires étrangères et du Développement international , 22 avril 2015
+    Copyright Ministère des Affaires étrangères et du Développement international , 22 avril 2015
     https://adullact.net/projects/hornet/
 
 
@@ -42,14 +42,15 @@
 	<parent>
 		<groupId>fr.gouv.diplomatie.hornet</groupId>
 		<artifactId>hornet-service-parent</artifactId>
-		<version>5.2.0</version>
+
+		<version>5.4.0</version>
 		<relativePath>../../hornet-service-parent</relativePath>
 	</parent>
 	
 	<!-- Basics -->
 	<groupId>fr.gouv.diplomatie.hornet</groupId>
 	<artifactId>hornet-pom-orm</artifactId>
-	<version>5.2.0</version>
+	<version>5.4.0</version>
 	<packaging>pom</packaging>
 
 	<inceptionYear>2015</inceptionYear>
@@ -60,7 +61,7 @@
 
 	<!-- Properties -->
 	<properties>
-		<hornet.version>5.2.0</hornet.version>
+		<hornet.version>5.4.0</hornet.version>
 		<hornet.groupId>fr.gouv.diplomatie.hornet</hornet.groupId>
 	</properties>
 	

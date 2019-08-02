@@ -75,7 +75,6 @@ import hornet.framework.export.ExportModelService;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpInputMessage;
@@ -84,6 +83,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.AbstractHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
+
+import hornet.framework.export.ExportModelService;
 
 /**
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
@@ -177,7 +178,7 @@ public abstract class AbstractHornetHttpMessageConverter<T, U extends ExportMode
         throws IOException, HttpMessageNotReadableException {
 
         throw new HttpMessageNotReadableException(
-                    "Import Non implémenté : ce MessageConverter ne gère que l'export");
+                    "Import Non implémenté : ce MessageConverter ne gère que l'export", inputMessage);
     }
 
     /**
@@ -201,16 +202,12 @@ public abstract class AbstractHornetHttpMessageConverter<T, U extends ExportMode
 
         LOG.debug("Demande d'export de {}", toExport.getClass());
 
-        OutputStream os = null;
-        try {
-            os = outputMessage.getBody();
+        try (OutputStream os = outputMessage.getBody()) {
             ecrireFichier(toExport, os);
         } catch (final Exception e) {
             LOG.error("Erreur lors de la demande d'export de la classe {} : {}", toExport.getClass(),
                 e.getMessage(), e);
             throw e;
-        } finally {
-            IOUtils.closeQuietly(os);
         }
     }
 

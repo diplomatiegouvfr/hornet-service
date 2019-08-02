@@ -70,10 +70,6 @@
  */
 package hornet.framework.typemime;
 
-import hornet.framework.typemime.bo.TypeMime;
-import hornet.framework.typemime.parseur.ApertureParseur;
-import hornet.framework.typemime.utility.ConstantesTypeMime;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -83,10 +79,14 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ApertureTest {
+import hornet.framework.typemime.bo.TypeMime;
+import hornet.framework.typemime.parseur.TikaParseur;
+import hornet.framework.typemime.utility.ConstantesTypeMime;
+
+public class TikkaTest {
 
     /** logger. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(ApertureTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TikkaTest.class);
 
     /**
      * <code>ressources</code> the ressources
@@ -186,7 +186,7 @@ public class ApertureTest {
     /**
      * <code>parser</code> the parser
      */
-    private static ApertureParseur parser = new ApertureParseur();
+    private static TikaParseur parser = new TikaParseur();
 
     /**
      * <code>typeMime</code> the typeMime
@@ -229,7 +229,7 @@ public class ApertureTest {
     public void testJPG() {
 
         LOGGER.info("testing JPG image...");
-        this.genericParseAperture(jpgFile);
+        genericParseAperture(jpgFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.IMG_JPEG);
         Assert.assertTrue(typeMime.isImage());
         LOGGER.info("");
@@ -242,7 +242,7 @@ public class ApertureTest {
     public void testPNG() {
 
         LOGGER.info("testing PNG image...");
-        this.genericParseAperture(pngFile);
+        genericParseAperture(pngFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.IMG_PNG);
         Assert.assertTrue(typeMime.isImage());
         LOGGER.info("");
@@ -255,7 +255,7 @@ public class ApertureTest {
     public void testGIFNonAnime() {
 
         LOGGER.info("testing GIF image non anime...");
-        this.genericParseAperture(gifFile);
+        genericParseAperture(gifFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.IMG_GIF);
         Assert.assertTrue(typeMime.isImage());
         LOGGER.info("");
@@ -268,7 +268,7 @@ public class ApertureTest {
     public void testGIFAnime() {
 
         LOGGER.info("testing GIF image anime...");
-        this.genericParseAperture(gifAnimeFile);
+        genericParseAperture(gifAnimeFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.IMG_GIF);
         Assert.assertTrue(typeMime.isImage());
         LOGGER.info("");
@@ -286,7 +286,7 @@ public class ApertureTest {
     public void testText() {
 
         LOGGER.info("testing Text File...");
-        this.genericParseAperture(textFile);
+        genericParseAperture(textFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.TXT_TEXT);
         Assert.assertTrue(typeMime.isTextFile());
         LOGGER.info("");
@@ -299,7 +299,7 @@ public class ApertureTest {
     public void testRTF() {
 
         LOGGER.info("testing RTF...");
-        this.genericParseAperture(rtfFile);
+        genericParseAperture(rtfFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.TXT_RTF);
         Assert.assertTrue(typeMime.isTextFile());
         LOGGER.info("");
@@ -312,7 +312,7 @@ public class ApertureTest {
     public void testPDF() {
 
         LOGGER.info("testing PDF...");
-        this.genericParseAperture(pdfFile);
+        genericParseAperture(pdfFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.DOC_PDF);
         Assert.assertTrue(typeMime.isPDFFile());
         LOGGER.info("");
@@ -330,7 +330,7 @@ public class ApertureTest {
     public void testExcel2K() {
 
         LOGGER.info("testing Excel 2K...");
-        this.genericParseAperture(excel2KFile);
+        genericParseAperture(excel2KFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.EXCEL_2K);
         Assert.assertTrue(typeMime.isExcelFile());
         LOGGER.info("");
@@ -343,7 +343,7 @@ public class ApertureTest {
     public void testExcel2007() {
 
         LOGGER.info("testing Excel 2007...");
-        this.genericParseAperture(excel2007File);
+        genericParseAperture(excel2007File);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.EXCEL_2007);
         Assert.assertTrue(typeMime.isExcelFile());
         LOGGER.info("");
@@ -356,7 +356,7 @@ public class ApertureTest {
     public void testWord95() {
 
         LOGGER.info("testing Word 95...");
-        this.genericParseAperture(word95File);
+        genericParseAperture(word95File);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.WORD_95);
         Assert.assertTrue(typeMime.isWordFile());
         LOGGER.info("");
@@ -369,7 +369,7 @@ public class ApertureTest {
     public void testWord2K() {
 
         LOGGER.info("testing Word 2K...");
-        this.genericParseAperture(word2KFile);
+        genericParseAperture(word2KFile);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.WORD_2K);
         Assert.assertTrue(typeMime.isWordFile());
         LOGGER.info("");
@@ -382,7 +382,7 @@ public class ApertureTest {
     public void testWord2007() {
 
         LOGGER.info("testing Word 2007...");
-        this.genericParseAperture(word2007File);
+        genericParseAperture(word2007File);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.WORD_2007);
         Assert.assertTrue(typeMime.isWordFile());
         LOGGER.info("");
@@ -395,7 +395,7 @@ public class ApertureTest {
     public void testOpenOfficeSheet() {
 
         LOGGER.info("testing Open Office Sheet...");
-        this.genericParseAperture(openOfficeSheet);
+        genericParseAperture(openOfficeSheet);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.OO_SHEET);
         Assert.assertTrue(typeMime.isOpenOfficeFile() && typeMime.isOpenOfficeSheetFile());
         LOGGER.info("");
@@ -408,7 +408,7 @@ public class ApertureTest {
     public void testOpenOfficeText() {
 
         LOGGER.info("testing Open Office Text...");
-        this.genericParseAperture(openOfficeText);
+        genericParseAperture(openOfficeText);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.OO_TEXT);
         Assert.assertTrue(typeMime.isOpenOfficeFile() && typeMime.isOpenOfficeTextFile());
         LOGGER.info("");
@@ -426,8 +426,8 @@ public class ApertureTest {
     public void testArchiveTar() {
 
         LOGGER.info("testing Archive Tar...");
-        this.genericParseAperture(archiveTar);
-        Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.ARCH_TAR);
+        genericParseAperture(archiveTar);
+        Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.ARCH_G_TAR);
         Assert.assertTrue(typeMime.isArchiveFile());
         LOGGER.info("");
     }
@@ -439,7 +439,7 @@ public class ApertureTest {
     public void testArchiveTarGz() {
 
         LOGGER.info("testing Archive Tar Gz ...");
-        this.genericParseAperture(archiveTarGz);
+        genericParseAperture(archiveTarGz);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.ARCH_TAR_GZ);
         Assert.assertTrue(typeMime.isArchiveFile());
         LOGGER.info("");
@@ -452,7 +452,7 @@ public class ApertureTest {
     public void testArchiveGz() {
 
         LOGGER.info("testing Archive Gz...");
-        this.genericParseAperture(archiveGz);
+        genericParseAperture(archiveGz);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.ARCH_GZIP);
         Assert.assertTrue(typeMime.isArchiveFile());
         LOGGER.info("");
@@ -465,7 +465,7 @@ public class ApertureTest {
     public void testArchiveZip() {
 
         LOGGER.info("testing Archive Zip...");
-        this.genericParseAperture(archiveZip);
+        genericParseAperture(archiveZip);
         Assert.assertEquals(typeMime.getNom(), ConstantesTypeMime.ARCH_ZIP);
         Assert.assertTrue(typeMime.isArchiveFile());
         LOGGER.info("");

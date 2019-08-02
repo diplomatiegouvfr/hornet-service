@@ -130,6 +130,8 @@ ExportXlsModelService<T> {
 
     @Override
     public HSSFWorkbook construireXlsModel(final T toExport) {
+        
+        LOG.debug("Create Xls");
 
         // Blank workbook
         final HSSFWorkbook workbook = new HSSFWorkbook();

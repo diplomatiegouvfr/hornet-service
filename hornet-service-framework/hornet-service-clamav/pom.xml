@@ -1,6 +1,6 @@
 <!--
 
-    ﻿Copyright Ministère des Affaires étrangères et du Développement international , 22 avril 2015
+    Copyright Ministère des Affaires étrangères et du Développement international , 22 avril 2015
     https://adullact.net/projects/hornet/
 
 
@@ -41,7 +41,7 @@
 	<parent>
 		<groupId>fr.gouv.diplomatie.hornet</groupId>
 		<artifactId>hornet-service-framework-parent</artifactId>
-		<version>5.2.0</version>
+		<version>5.4.0</version>
 	</parent>
 	<artifactId>hornet-service-clamav</artifactId>
 	<packaging>jar</packaging>

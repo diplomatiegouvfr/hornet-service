@@ -157,7 +157,7 @@ public class SSLSocketSpringFactory {
      */
     public SSLSocketFactory getObject() throws GeneralSecurityException, IOException {
 
-        final SSLContext context = SSLContext.getInstance("TLS");
+        final SSLContext context = SSLContext.getInstance("TLSv1.2");
         // Initialisation le contexte SSL à l'aide du KeyStore
         context.init(this.getKeyManagers(), null, null);
         return context.getSocketFactory();

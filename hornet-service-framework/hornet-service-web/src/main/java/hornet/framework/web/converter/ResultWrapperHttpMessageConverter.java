@@ -99,8 +99,12 @@ import hornet.framework.web.controller.NullOrVoidJsonResponseBodyAdvice;
  *
  */
 public class ResultWrapperHttpMessageConverter extends MappingJackson2HttpMessageConverter {
-    // public class ResultWrapperHttpMessageConverter extends AbstractJackson2HttpMessageConverter {
-
+    
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 1L;
+    
     final static class VoidSerializer extends StdSerializer<Void> {
         public final static VoidSerializer instance = new VoidSerializer();
 

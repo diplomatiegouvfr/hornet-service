@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.BiFunction;
 
 import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
@@ -100,9 +101,15 @@ implements CrudProjectionRepository<T, ID> {
             return Jpa21Utils.tryGetFetchGraphHints(em, dynamicEntityGraph, entityInformation.getJavaType());
         }
 
-        return Optionals
-                    .mapIfAllPresent(Optional.ofNullable(em), metadata.getEntityGraph(), (em, graph) -> Jpa21Utils
-                        .tryGetFetchGraphHints(em, getEntityGraph(graph), entityInformation.getJavaType()))
+        return (Map<String, Object>) Optionals
+                    .mapIfAllPresent(Optional.ofNullable(em), metadata.getEntityGraph(), new BiFunction<EntityManager, org.springframework.data.jpa.repository.EntityGraph, Object>() {
+                        @Override
+                        public Object apply(EntityManager em,
+                                org.springframework.data.jpa.repository.EntityGraph graph) {
+                            return Jpa21Utils
+                                .tryGetFetchGraphHints(em, getEntityGraph(graph), entityInformation.getJavaType());
+                        }
+                    })
                     .orElse(Collections.emptyMap());
     }
 

@@ -191,7 +191,7 @@ public class SSLSocketSpringFactoryWithTrustStore extends SSLSocketSpringFactory
         // Récupérons le TrustManager à l'aide du fournisseur
         final TrustManager[] trustManagers = trustFactory.getTrustManagers();
 
-        final SSLContext context = SSLContext.getInstance("TLS");
+        final SSLContext context = SSLContext.getInstance("TLSv1.2");
         // Initialisation le contexte SSL à l'aide du KeyStore et du TrustStore
         context.init(kms, trustManagers, null);
 

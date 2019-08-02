@@ -70,34 +70,33 @@
  */
 package hornet.framework.typemime.parseur;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
-import org.semanticdesktop.aperture.mime.identifier.MimeTypeIdentifier;
-import org.semanticdesktop.aperture.mime.identifier.magic.MagicMimeTypeIdentifier;
-import org.semanticdesktop.aperture.util.IOUtil;
+import org.apache.tika.Tika;
+import org.apache.tika.metadata.Metadata;
 
 import hornet.framework.typemime.bo.TypeMime;
 
 /**
  * ApertureParseur
  */
-public class ApertureParseur implements TypeMimeParseur {
+public class TikaParseur implements TypeMimeParseur {
 
     /**
      * <code>identifier</code> the identifier
      */
-    private transient MimeTypeIdentifier identifier;
+    private transient Tika identifier;
 
     /**
      * Constructeur
      */
-    public ApertureParseur() {
+    public TikaParseur() {
 
         super();
-        this.identifier = new MagicMimeTypeIdentifier();
+        identifier = new Tika();
     }
 
     /** {@inheritDoc} */
@@ -105,12 +104,17 @@ public class ApertureParseur implements TypeMimeParseur {
     public TypeMime parse(final File file) throws IOException {
 
         final FileInputStream stream = new FileInputStream(file);
-        final BufferedInputStream buffer = new BufferedInputStream(stream);
-        final byte[] bytes = IOUtil.readBytes(buffer, this.identifier.getMinArrayLength());
-        stream.close();
+        final TypeMime typeMime = new TypeMime();
+        typeMime.setNom(identifier.detect(stream, file.getName()));
+        return typeMime;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public TypeMime parse(final InputStream fileInputStream) throws IOException {
 
         final TypeMime typeMime = new TypeMime();
-        typeMime.setNom(this.identifier.identify(bytes, file.getPath(), null));
+        typeMime.setNom(identifier.detect(fileInputStream, new Metadata()));
         return typeMime;
     }
 

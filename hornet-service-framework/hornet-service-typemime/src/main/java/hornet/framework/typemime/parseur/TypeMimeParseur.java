@@ -72,6 +72,7 @@ package hornet.framework.typemime.parseur;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import hornet.framework.typemime.bo.TypeMime;
 
@@ -82,7 +83,7 @@ public interface TypeMimeParseur {
 
     /**
      * Parse le fichier et retourne le TypeMime
-     * 
+     *
      * @param file
      *            le fichier
      * @return TypeMime
@@ -90,4 +91,15 @@ public interface TypeMimeParseur {
      *             exception
      */
     TypeMime parse(File file) throws IOException;
+
+    /**
+     * Parse le flux d'entrée et retourne le TypeMime
+     *
+     * @param file
+     *            le fichier
+     * @return TypeMime
+     * @throws IOException
+     *             exception
+     */
+    TypeMime parse(final InputStream fileInputStream) throws IOException;
 }

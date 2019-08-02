@@ -70,25 +70,20 @@
  */
 package hornet.framework.web.conf;
 
-import hornet.framework.web.converter.HornetMediaType;
-import hornet.framework.web.converter.ResultWrapperHttpMessageConverter;
-
 import java.util.List;
 
-import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
-import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import hornet.framework.web.converter.HornetMediaType;
+import hornet.framework.web.converter.ResultWrapperHttpMessageConverter;
 
 /**
  * @author MEAE - Ministère de l'Europe et des Affaires étrangères
  */
-public class HornetWebConfig extends WebMvcConfigurerAdapter {
+public class HornetWebConfig implements WebMvcConfigurer {
 
     @Override
     public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
@@ -102,7 +97,7 @@ public class HornetWebConfig extends WebMvcConfigurerAdapter {
                     // Gestion par le header 'accept-type'
                     .ignoreAcceptHeader(false)
                     // Désactive l'utilisation de Java Activation Framework
-                    .useJaf(false)
+                    .useRegisteredExtensionsOnly(true)
                     // Type par défaut
                     .defaultContentType(MediaType.APPLICATION_JSON)
                     // Types acceptés par le parametre mediaType et leur mapping

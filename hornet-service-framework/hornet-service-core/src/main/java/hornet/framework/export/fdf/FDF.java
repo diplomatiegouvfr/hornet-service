@@ -70,8 +70,6 @@
  */
 package hornet.framework.export.fdf;
 
-import hornet.framework.export.fdf.exception.FDFExportException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -88,6 +86,8 @@ import com.lowagie.text.pdf.AcroFields;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
+
+import hornet.framework.export.fdf.exception.FDFExportException;
 
 /**
  *
@@ -165,7 +165,9 @@ public final class FDF {
             throw new FDFExportException(ex);
         } finally {
             try {
-                stamper.close();
+                if (stamper != null) {
+                    stamper.close();
+                }
             } catch (final Exception ex) {
                 LOG.error("Erreur", ex);
             }
@@ -221,8 +223,8 @@ public final class FDF {
             if (imValue.isFit()) {
                 content.addImage(im, positions[FieldBoxPositions.URX.ordinal()]
                             - positions[FieldBoxPositions.LLX.ordinal()], 0, 0,
-                    positions[FieldBoxPositions.URY.ordinal()] - positions[FieldBoxPositions.LLY.ordinal()],
-                    positions[FieldBoxPositions.LLX.ordinal()], positions[FieldBoxPositions.LLY.ordinal()]);
+                            positions[FieldBoxPositions.URY.ordinal()] - positions[FieldBoxPositions.LLY.ordinal()],
+                            positions[FieldBoxPositions.LLX.ordinal()], positions[FieldBoxPositions.LLY.ordinal()]);
             } else {
                 content.addImage(im, im.getWidth(), 0, 0, im.getHeight(), positions[1], positions[2]);
             }

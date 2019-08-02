@@ -70,10 +70,6 @@
  */
 package hornet.framework.clamav;
 
-import hornet.framework.clamav.bo.ClamAvResponse;
-import hornet.framework.clamav.exception.ClamAVException;
-import hornet.framework.clamav.service.ClamAVCheckService;
-
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -90,6 +86,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import hornet.framework.clamav.bo.ClamAvResponse;
+import hornet.framework.clamav.exception.ClamAVException;
+import hornet.framework.clamav.service.ClamAVCheckService;
 
 /**
  * Classe d'appel multi parallèle au service ClamAV Projet ELL036-TestClamAV.
@@ -162,12 +162,12 @@ public class MultiParralelTest {
 
             super();
             this.numThread = numThread;
-            this.listFichier = (File[]) Arrays.asList(aListFichier).toArray();
-            this.setName("Injecteur ClamAV n°" + numThread);
-            this.nbFichierNoVirus = 0;
-            this.nbFichierVirus = 0;
-            this.nbFichierNoService = 0;
-            this.nbFichierTimeout = 0;
+            listFichier = Arrays.asList(aListFichier).toArray(new File[0]);
+            setName("Injecteur ClamAV n°" + numThread);
+            nbFichierNoVirus = 0;
+            nbFichierVirus = 0;
+            nbFichierNoService = 0;
+            nbFichierTimeout = 0;
         }
 
         /**
@@ -181,21 +181,21 @@ public class MultiParralelTest {
             if (clamAvResponse != null) {
 
                 if (ClamAvResponse.CategorieReponse.NO_VIRUS.equals(clamAvResponse.getCategorieReponse())) {
-                    this.nbFichierNoVirus++;
+                    nbFichierNoVirus++;
 
                 } else {
                     if (ClamAvResponse.CategorieReponse.VIRUS.equals(clamAvResponse.getCategorieReponse())) {
-                        this.nbFichierVirus++;
+                        nbFichierVirus++;
 
                     } else {
                         if (ClamAvResponse.CategorieReponse.NO_SERVICE.equals(clamAvResponse
-                                    .getCategorieReponse())) {
-                            this.nbFichierNoService++;
+                            .getCategorieReponse())) {
+                            nbFichierNoService++;
 
                         } else {
                             if (ClamAvResponse.CategorieReponse.TIMEOUT.equals(clamAvResponse
-                                        .getCategorieReponse())) {
-                                this.nbFichierTimeout++;
+                                .getCategorieReponse())) {
+                                nbFichierTimeout++;
 
                             }
                         }
@@ -234,18 +234,18 @@ public class MultiParralelTest {
 
             long startTime;
             long endTime;
-            MultiParralelTest.LOGGER.warn(String.format("Envoi des %d fichiers", this.listFichier.length));
+            MultiParralelTest.LOGGER.warn(String.format("Envoi des %d fichiers", listFichier.length));
             ClamAvResponse clamAvResponse = null;
-            for (int i = 0; i < this.listFichier.length; i++) {
+            for (int i = 0; i < listFichier.length; i++) {
 
                 startTime = System.currentTimeMillis();
 
-                clamAvResponse = MultiParralelTest.this.analyseUnFichier(this.listFichier[i]);
+                clamAvResponse = analyseUnFichier(listFichier[i]);
 
                 endTime = System.currentTimeMillis();
 
-                this.infocsv(this.numThread, i + 1, this.listFichier[i].getName(),
-                    Long.valueOf(this.listFichier[i].length() / CONST_8), Long.valueOf(endTime - startTime));
+                infocsv(numThread, i + 1, listFichier[i].getName(),
+                    Long.valueOf(listFichier[i].length() / CONST_8), Long.valueOf(endTime - startTime));
 
                 try {
                     Thread.sleep(THREAD_SLEEP_TIME);
@@ -253,13 +253,13 @@ public class MultiParralelTest {
                     MultiParralelTest.LOGGER.error("Problème de sleep après analyse", e);
                 }
 
-                this.stats(clamAvResponse);
+                stats(clamAvResponse);
             }
             MultiParralelTest.LOGGER
-                        .warn(
-                            "nbFichierNoVirus : {}, nbFichierVirus : {}, nbFichierNoService : {}, nbFichierTimeout : {} - Fin",
-                            this.nbFichierNoVirus, this.nbFichierVirus, this.nbFichierNoService,
-                            this.nbFichierTimeout);
+            .warn(
+                "nbFichierNoVirus : {}, nbFichierVirus : {}, nbFichierNoService : {}, nbFichierTimeout : {} - Fin",
+                nbFichierNoVirus, nbFichierVirus, nbFichierNoService,
+                nbFichierTimeout);
         }
     }
 
@@ -275,7 +275,7 @@ public class MultiParralelTest {
         ClamAvResponse ret = null;
 
         try {
-            ret = this.clamAVCheckService.checkByStream(fichier);
+            ret = clamAVCheckService.checkByStream(fichier);
         } catch (final ClamAVException e) {
             MultiParralelTest.LOGGER.error(e.getMessage());
         }
@@ -301,7 +301,7 @@ public class MultiParralelTest {
         // Ignore le test si le fichier cible n'existe pas
         final URL url =
                     Thread.currentThread().getContextClassLoader()
-                                .getResource(this.config.getCheminFichier());
+                    .getResource(config.getCheminFichier());
         Assume.assumeNotNull(url);
 
         long startTime;
@@ -311,14 +311,14 @@ public class MultiParralelTest {
 
         startTime = System.currentTimeMillis();
 
-        this.analyseUnFichier(new File(url.toURI()));
+        analyseUnFichier(new File(url.toURI()));
         endTime = System.currentTimeMillis();
         refTime = endTime - startTime;
         // Configuration du nombre de thread à créer
-        lesThreads = new Thread[this.config.getNbThread()];
+        lesThreads = new Thread[config.getNbThread()];
 
         final URL urlChemin =
-                    Thread.currentThread().getContextClassLoader().getResource(this.config.getChemin());
+                    Thread.currentThread().getContextClassLoader().getResource(config.getChemin());
 
         final File directory = new File(urlChemin.toURI());
 
@@ -334,9 +334,9 @@ public class MultiParralelTest {
 
         for (int i = 0; i < lesThreads.length; i++) {
 
-            final File[] fileThread = new File[this.config.getNbFichier()];
+            final File[] fileThread = new File[config.getNbFichier()];
             // constitution de la liste des fichiers à traiter
-            for (int j = 0; j < this.config.getNbFichier(); j++) {
+            for (int j = 0; j < config.getNbFichier(); j++) {
 
                 // retour au début de la liste de fichier
                 if (j + indexFile >= fileList.length) {
@@ -347,7 +347,7 @@ public class MultiParralelTest {
                 fileThread[j] = fileList[j + indexFile];
 
                 // sauvegarde du dernier indice de fichier
-                if (j == this.config.getNbFichier() - 1) {
+                if (j == config.getNbFichier() - 1) {
                     indexFile += j + 1;
                 }
             }
@@ -364,11 +364,11 @@ public class MultiParralelTest {
         }
 
         endTime = System.currentTimeMillis();
-        Assert.assertEquals(refTime, endTime - startTime, this.config.getTpsAcceptable());
-        MultiParralelTest.LOGGER.info("nbThread : {}", this.config.getNbThread());
-        MultiParralelTest.LOGGER.info("nbFichier par thread : {}", this.config.getNbFichier());
+        Assert.assertEquals(refTime, endTime - startTime, config.getTpsAcceptable());
+        MultiParralelTest.LOGGER.info("nbThread : {}", config.getNbThread());
+        MultiParralelTest.LOGGER.info("nbFichier par thread : {}", config.getNbFichier());
         MultiParralelTest.LOGGER.info("Total traité : {}",
-            this.config.getNbThread() * this.config.getNbFichier());
+            config.getNbThread() * config.getNbFichier());
         MultiParralelTest.LOGGER.info("Durée de traitement des threads : {}", endTime - startTime);
         MultiParralelTest.LOGGER.info("Temps de référence pour un fichier : {}", refTime);
     }

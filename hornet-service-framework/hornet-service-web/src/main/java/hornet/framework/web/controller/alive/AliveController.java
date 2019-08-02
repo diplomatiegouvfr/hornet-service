@@ -79,7 +79,7 @@ public class AliveController {
     @GetMapping()
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void alive() {
-
+        LOGGER.debug("I'm alive !");
         return;
     }
 

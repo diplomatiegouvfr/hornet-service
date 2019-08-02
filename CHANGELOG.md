@@ -1,8 +1,13 @@
+# hornet-service 5.4.0
+ - EVOL: Version plugins maven
+ - EVOL: Update versions des dependances
+ - EVOL : remplacement aperture par tika
+
 # hornet-service 5.2.0
  - EVOL: Version plugins maven
  - EVOL: Update versions des dependances
  - EVOL: Retouche header license
- - EVOL: Meuilleur gestion code retour http
+ - EVOL: Meilleure gestion code retour http
  - EVOL: Ajout status http dans la log
 
 # hornet-service 5.1.0-rc.2

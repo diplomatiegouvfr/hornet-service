@@ -98,7 +98,7 @@ public final class ConstantesTypeMime {
     /**
      * <code>TXT_RTF</code> the TXT_RTF
      */
-    public static final String TXT_RTF = "text/rtf";
+    public static final String TXT_RTF = "application/rtf";
 
     /**
      * <code>DOC_PDF</code> the DOC_PDF
@@ -113,22 +113,24 @@ public final class ConstantesTypeMime {
     /**
      * <code>EXCEL_2007</code> the EXCEL_2007
      */
-    public static final String EXCEL_2007 = "application/vnd.openxmlformats-officedocument.spreadsheetml";
+    public static final String EXCEL_2007 =
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
     /**
      * <code>WORD_95</code> the WORD_95
      */
-    public static final String WORD_95 = "application/vnd.ms-word";
+    public static final String WORD_95 = "application/msword";
 
     /**
      * <code>WORD_2K</code> the WORD_2K
      */
-    public static final String WORD_2K = "application/vnd.ms-word";
+    public static final String WORD_2K = "application/msword";
 
     /**
      * <code>WORD_2007</code> the WORD_2007
      */
-    public static final String WORD_2007 = "application/vnd.openxmlformats-officedocument.wordprocessingml";
+    public static final String WORD_2007 =
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
     /**
      * <code>OO_SHEET</code> the OO_SHEET
@@ -144,6 +146,11 @@ public final class ConstantesTypeMime {
      * <code>ARCH_TAR</code> the ARCH_TAR
      */
     public static final String ARCH_TAR = "application/x-tar";
+
+    /**
+     * <code>ARCH_TAR</code> the ARCH_G_TAR (tar + compress)
+     */
+    public static final String ARCH_G_TAR = "application/x-gtar";
 
     /**
      * <code>ARCH_TAR_GZ</code> the ARCH_TAR_GZ

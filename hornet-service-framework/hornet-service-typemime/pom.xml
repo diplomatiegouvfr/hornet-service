@@ -1,6 +1,6 @@
 <!--
 
-    ﻿Copyright Ministère des Affaires étrangères et du Développement international , 22 avril 2015
+    Copyright Ministère des Affaires étrangères et du Développement international , 22 avril 2015
     https://adullact.net/projects/hornet/
 
 
@@ -41,43 +41,18 @@
 	<parent>
 		<groupId>fr.gouv.diplomatie.hornet</groupId>
 		<artifactId>hornet-service-framework-parent</artifactId>
-		<version>5.2.0</version>
+		<version>5.4.0</version>
 	</parent>
 	<artifactId>hornet-service-typemime</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.semanticdesktop.aperture</groupId>
-			<artifactId>aperture-core</artifactId>
-		</dependency>
 
-		<!-- Dépendances de aperture-core -->
 		<dependency>
-			<groupId>org.semanticdesktop.nepomuk</groupId>
-			<artifactId>aperture-tools-demork</artifactId>
-			<version>1.0.0</version>
+		    <groupId>org.apache.tika</groupId>
+		    <artifactId>tika-core</artifactId>
+		    <version>1.18</version>
 		</dependency>
-		<dependency>
-			<groupId>org.semweb4j</groupId>
-			<artifactId>rdf2go.api</artifactId>
-			<version>4.7.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		<!-- / Dépendances de aperture-core -->
 
 	</dependencies>
 

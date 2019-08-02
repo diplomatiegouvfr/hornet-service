@@ -74,6 +74,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
@@ -110,7 +111,7 @@ public class SOAPLoggingHandler implements SOAPHandler<SOAPMessageContext> {
     @Override
     public boolean handleMessage(final SOAPMessageContext smc) {
 
-        this.logSOAP(smc);
+        logSOAP(smc);
         return true;
     }
 
@@ -120,7 +121,7 @@ public class SOAPLoggingHandler implements SOAPHandler<SOAPMessageContext> {
     @Override
     public boolean handleFault(final SOAPMessageContext smc) {
 
-        this.logSOAP(smc);
+        logSOAP(smc);
         return true;
     }
 
@@ -160,6 +161,7 @@ public class SOAPLoggingHandler implements SOAPHandler<SOAPMessageContext> {
         try {
             // Create transformer
             final TransformerFactory tff = TransformerFactory.newInstance();
+            tff.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
             final Transformer tranf = tff.newTransformer();
 
             // Get reply content
