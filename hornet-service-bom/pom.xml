@@ -138,7 +138,7 @@
 	            <itext.version>LATEST</itext.version>
 	            <jackson.version>LATEST</jackson.version>
 	            <jtds.version>LATEST</jtds.version>
-	            <junit.version>LATEST</junit.version>
+	            <junit.version>4.13.1</junit.version>
 	            <logback.version>LATEST</logback.version>
 	            <mail.version>LATEST</mail.version>
 	            <jasperreports.version>LATEST</jasperreports.version>
