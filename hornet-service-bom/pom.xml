@@ -154,7 +154,7 @@
 	            <hibernate.jpa.version>LATEST</hibernate.jpa.version>
 	            <hibernate.version>LATEST</hibernate.version>
 	            <velocity.version>LATEST</velocity.version>
-	            <org.mybatis.mybatis.version>LATEST</org.mybatis.mybatis.version>
+	            <org.mybatis.mybatis.version>3.5.6</org.mybatis.mybatis.version>
 	            <org.mybatis.mybatis-spring.version>LATEST</org.mybatis.mybatis-spring.version>
 	            <net.ju-n.commons-dbcp-jmx.version>LATEST</net.ju-n.commons-dbcp-jmx.version>
    	            <javax.annotation-api.versions>LATEST</javax.annotation-api.versions>
