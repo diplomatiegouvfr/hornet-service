@@ -130,7 +130,7 @@
 	            <aspectjrt.version>LATEST</aspectjrt.version>
 	            <commons-beanutils.version>LATEST</commons-beanutils.version>
 	            <commons-dbcp.version>LATEST</commons-dbcp.version>
-	            <commons-io.version>LATEST</commons-io.version>
+	            <commons-io.version>2.7</commons-io.version>
 	            <commons-lang3.version>LATEST</commons-lang3.version>
 	            <commons-pool2.version>LATEST</commons-pool2.version>
 	            <ehcache.version>LATEST</ehcache.version>
