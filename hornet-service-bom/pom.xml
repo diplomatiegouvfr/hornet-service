@@ -148,7 +148,7 @@
 	            <validation-api.version>LATEST</validation-api.version>
 	            <slf4j.version>LATEST</slf4j.version>
 	            <spring.version>LATEST</spring.version>
-	            <spring.security.version>LATEST</spring.security.version>
+	            <spring.security.version>5.2.10.RELEASE</spring.security.version>
    	            <spring.boot.version>LATEST</spring.boot.version>
 	            <spring.data.version>LATEST</spring.data.version>
 	            <hibernate.jpa.version>LATEST</hibernate.jpa.version>
