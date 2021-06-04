@@ -134,7 +134,7 @@
 	            <commons-lang3.version>LATEST</commons-lang3.version>
 	            <commons-pool2.version>LATEST</commons-pool2.version>
 	            <ehcache.version>LATEST</ehcache.version>
-	            <httpclient.version>LATEST</httpclient.version>
+	            <httpclient.version>4.5.13</httpclient.version>
 	            <itext.version>LATEST</itext.version>
 	            <jackson.version>LATEST</jackson.version>
 	            <jtds.version>LATEST</jtds.version>
