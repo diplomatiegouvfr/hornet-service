@@ -149,7 +149,7 @@
 	            <slf4j.version>LATEST</slf4j.version>
 	            <spring.version>LATEST</spring.version>
 	            <spring.security.version>LATEST</spring.security.version>
-   	            <spring.boot.version>LATEST</spring.boot.version>
+   	            <spring.boot.version>2.5.12</spring.boot.version>
 	            <spring.data.version>LATEST</spring.data.version>
 	            <hibernate.jpa.version>LATEST</hibernate.jpa.version>
 	            <hibernate.version>LATEST</hibernate.version>
