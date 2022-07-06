@@ -150,7 +150,7 @@
 	            <spring.version>LATEST</spring.version>
 	            <spring.security.version>LATEST</spring.security.version>
    	            <spring.boot.version>LATEST</spring.boot.version>
-	            <spring.data.version>LATEST</spring.data.version>
+	            <spring.data.version>1.11.23.RELEASE</spring.data.version>
 	            <hibernate.jpa.version>LATEST</hibernate.jpa.version>
 	            <hibernate.version>LATEST</hibernate.version>
 	            <velocity.version>LATEST</velocity.version>
